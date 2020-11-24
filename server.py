@@ -36,7 +36,7 @@ def create_socket():
         global host  # global variable storing host/ip of server
         global port  # global variable storing port on which server will be listening
         global s     # global variable for socket on which server will be listening
-        host=""      # initialize with static ip of server
+        host=""      # host ="" refers to 0.0.0.0 which is catch-all IP 
         port=9999    # any port number which is not reserved port(greater than 1023)
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)  # creating a socket object- AF_INET-refers to IPv4 address family, 
         #                                                       SOCK_STREAM- use connection-oriented TCP protocol,SOCK_DGRAM- UDP connection
@@ -453,7 +453,7 @@ def create_jobs():
 
 def work():
     while True:
-        x=queue.get()           # retrieves and removes element at front of queue
+        x=queue.get()           # retrieves and removes element at front of queue-blocking function
         if x == 1:              # it indicates job number 1 i.e thread 1
             create_socket()     # creating socket
             bind_socket()       # binding socket to host and port
